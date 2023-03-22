@@ -222,7 +222,7 @@ button:hover {
 
 /****** PAGE CONNEXION ******/
 
-main {
+.main-connexion {
 	display: flex;
 	justify-content: center;
 	margin-top: 150px;
