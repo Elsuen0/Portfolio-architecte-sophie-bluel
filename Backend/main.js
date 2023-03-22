@@ -18,21 +18,24 @@ async function renderProjects(categoryId = '') {
   const filteredProjects = categoryId ? projects.filter(project => project.categoryId === categoryId) : projects;
 
   // Ajouter chaque projet à la galerie
-  for (const project of filteredProjects) {
+  for (let i = 0; i < filteredProjects.length; i++) {
+    const project = filteredProjects[i];
+  
     const galleryItem = document.createElement('div');
     galleryItem.classList.add('gallery-item');
-
+  
     const imgElement = document.createElement('img');
     imgElement.src = project.imageUrl;
     imgElement.alt = project.title;
-
+  
     const h3Element = document.createElement('h3');
     h3Element.textContent = project.title;
-
+  
     galleryItem.appendChild(imgElement);
     galleryItem.appendChild(h3Element);
     galleryElement.appendChild(galleryItem);
   }
+  
 }
 
 async function getCategories() {
@@ -57,7 +60,8 @@ categorySet.add(allButton);
 // Créer des boutons pour chaque catégorie
 async function createCategoryButtons() {
   const categories = await getCategories();
-  for (const category of categories) {
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
     const button = document.createElement('button');
     button.textContent = category.name;
     button.addEventListener('click', () => renderProjects(category.id));
