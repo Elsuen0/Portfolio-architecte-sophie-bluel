@@ -60,13 +60,15 @@ categorySet.add(allButton);
 // Créer des boutons pour chaque catégorie
 async function createCategoryButtons() {
   const categories = await getCategories();
+  const button = document.createElement('button');
+
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i];
-    const button = document.createElement('button');
     button.textContent = category.name;
     button.addEventListener('click', () => renderProjects(category.id));
     categorySet.add(button);
   }
+
 }
 
 // Ajouter les boutons à la page

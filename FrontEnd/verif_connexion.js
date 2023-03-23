@@ -1,5 +1,5 @@
 const loggedInBar = document.querySelector('.logged-in');
-const filterBar = document.querySelector('.button-container');
+const filterBar = document.querySelectorAll('.button-container');
 
 function checkIfUserIsLoggedIn() {
   if (localStorage.getItem('token')) {
