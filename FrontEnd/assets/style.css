@@ -50,16 +50,58 @@ table {
 body {
 	max-width: 1140px;
 	margin:auto;
+	margin-top: 0px;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
 header {
+	/*display: flex;*/
+	justify-content: space-between;
+	/*margin: 50px 0*/
+}
+
+.logged-in {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 38px;
+	width: 100%;
+	height: 59px;
+	background-color: black;
+	color: white;
+}
+
+.logged-in button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 216px;
+	height: 38px;
+	margin-left: 21px;
+
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+
+	background-color: white;
+	color: black;
+	border: none;
+}
+
+.fa-regular.fa-pen-to-square {
+	margin-right: 9px;
+}
+
+.logo_nav {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
 }
+
 section {
-	margin: 50px 0
+	margin: 150px 0
 }
 
 h1{
@@ -103,7 +145,7 @@ li:hover {
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 #introduction img {
 	display: block;
@@ -112,7 +154,8 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	max-width: 404px;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -123,7 +166,7 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin-bottom: 50px;
 }
 .gallery {
 	width: 100%;
@@ -189,7 +232,7 @@ footer nav ul {
 .button-container {
 	display: flex;
 	margin: auto;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	width: 585px;
 	justify-content: space-around;
 	/*border: 2px solid red;*/

@@ -28,19 +28,29 @@ loginForm.addEventListener('submit', (event) => {
       // Si la connexion échoue, afficher le message d'erreur
       throw new Error('e-mail ou mot de passe incorrect');
     }
-    if (localStorage.getItem('token')) {
-        const loginLink = document.querySelector('.lien_connexion li');
-        loginLink.textContent = 'Log Out';
-        loginLink.addEventListener('click', (event) => {
-          event.preventDefault();
-          // Supprimer le token du localStorage pour se déconnecter
-          localStorage.removeItem('token');
-          window.location.href = 'connexion.html';
-        });
-      }
+
   })
   .catch(error => {
     console.error(error);
     alert(error.message);
   });
 });
+
+const loggedInBar = document.querySelector('.logged-in');
+const loginLink = document.getElementById('login-link');
+const loginLinkText = document.querySelector('#login-link li');
+const filterBar = document.querySelector('.button-container');
+
+function checkIfUserIsLoggedIn() {
+  if (localStorage.getItem('token')) {
+    loggedInBar.style.display = 'flex';
+    loginLinkText.textContent = 'Log out';
+    filterBar.style.display = 'none';
+  } else {
+    loggedInBar.style.display = 'none';
+    loginLinkText.textContent = 'Login';
+    filterBar.style.display = 'flex'
+  }
+}
+
+checkIfUserIsLoggedIn(); // Vérifier si l'utilisateur est connecté lors du chargement de la page
