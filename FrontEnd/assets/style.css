@@ -263,6 +263,15 @@ button:hover {
 	color: white;
 }
 
+.lien_connexion {
+	/*border: 2px solid red;*/
+	text-decoration: none;
+}
+
+.lien_connexion li{
+	color: black;
+}
+
 /****** PAGE CONNEXION ******/
 
 .main-connexion {
