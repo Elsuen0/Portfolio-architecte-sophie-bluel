@@ -30,6 +30,7 @@ function handleLogout(event) {
   event.preventDefault(); // On empêche le comportement par défaut du lien
   localStorage.removeItem('token'); // Suppression du token dans le localStorage
   checkIfUserIsLoggedIn(); // Vérification du statut de connexion de l'utilisateur
+  window.location.reload();
 }
 
 // Fonction pour rediriger vers la page de connexion
