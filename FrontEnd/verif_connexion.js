@@ -3,6 +3,11 @@ const loggedInBar = document.querySelector('.logged-in');
 let filterBar; //Déclare la variable filterBar sans lui affecter de valeur pour l'instant
 const loginLink = document.querySelector('#login-link');
 
+window.addEventListener('load', () => { //On attend que tous les éléments soient chargés avant de masquer la classe button-container
+  filterBar = document.querySelector('.button-container'); //affecte la valeur à filterBar
+  checkIfUserIsLoggedIn();
+});
+
 // Fonction pour vérifier si l'utilisateur est connecté ou non
 function checkIfUserIsLoggedIn() {  
   if (localStorage.getItem('token')) { // Vérification de la présence d'un token dans le localStorage
@@ -19,11 +24,6 @@ function checkIfUserIsLoggedIn() {
     loginLink.innerHTML = '<li>login</li>'; // Modification du texte du bouton de connexion pour afficher "login"
   }
 }
-
-window.addEventListener('load', () => { //On attend que tous les éléments soient chargés avant de masquer la classe button-container
-  filterBar = document.querySelector('.button-container'); //affecte la valeur à filterBar
-  checkIfUserIsLoggedIn();
-});
 
 // Fonction pour gérer la déconnexion de l'utilisateur
 function handleLogout(event) {
