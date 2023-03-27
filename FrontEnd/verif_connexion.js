@@ -30,5 +30,7 @@ function redirectToLoginPage(event) {
   window.location.href = 'connexion.html'; // Redirection vers la page de connexion
 }
 
+
 // Vérification du statut de connexion de l'utilisateur au chargement de la page
 checkIfUserIsLoggedIn();
+ 
