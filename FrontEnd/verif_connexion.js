@@ -1,15 +1,17 @@
 // Sélection des éléments HTML à manipuler
 const loggedInBar = document.querySelector('.logged-in');
-const filterBar = document.querySelector('.button-container');
+let filterBar; //Déclare la variable filterBar sans lui affecter de valeur pour l'instant
 const loginLink = document.querySelector('#login-link');
 
 // Fonction pour vérifier si l'utilisateur est connecté ou non
 function checkIfUserIsLoggedIn() {  
   if (localStorage.getItem('token')) { // Vérification de la présence d'un token dans le localStorage
     loggedInBar.style.display = 'flex'; // Si l'utilisateur est connecté, affichage de la barre de navigation correspondante
-    filterBar.style.display='none';
     loginLink.addEventListener('click', handleLogout); // Ajout d'un écouteur d'événement au bouton de connexion pour permettre la déconnexion
     loginLink.innerHTML = '<li>logout</li>'; // Modification du texte du bouton de connexion pour afficher "logout"
+    if (filterBar) {
+      filterBar.style.display='none';
+    }
   } else {
     loggedInBar.style.display = 'none'; // Masquage de la barre de navigation correspondante
     loginLink.removeEventListener('click', handleLogout); // Suppression de l'écouteur d'événement pour la déconnexion
@@ -17,6 +19,11 @@ function checkIfUserIsLoggedIn() {
     loginLink.innerHTML = '<li>login</li>'; // Modification du texte du bouton de connexion pour afficher "login"
   }
 }
+
+window.addEventListener('load', () => { //On attend que tous les éléments soient chargés avant de masquer la classe button-container
+  filterBar = document.querySelector('.button-container'); //affecte la valeur à filterBar
+  checkIfUserIsLoggedIn();
+});
 
 // Fonction pour gérer la déconnexion de l'utilisateur
 function handleLogout(event) {
@@ -33,4 +40,3 @@ function redirectToLoginPage(event) {
 
 // Vérification du statut de connexion de l'utilisateur au chargement de la page
 checkIfUserIsLoggedIn();
- 
