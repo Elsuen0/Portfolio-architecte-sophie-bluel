@@ -84,3 +84,4 @@ addButtonsToPage();
 
 // Afficher tous les projets par défaut
 renderProjects();
+

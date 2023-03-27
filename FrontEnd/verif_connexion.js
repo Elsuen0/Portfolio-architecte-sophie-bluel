@@ -7,6 +7,7 @@ const loginLink = document.querySelector('#login-link');
 function checkIfUserIsLoggedIn() {  
   if (localStorage.getItem('token')) { // Vérification de la présence d'un token dans le localStorage
     loggedInBar.style.display = 'flex'; // Si l'utilisateur est connecté, affichage de la barre de navigation correspondante
+    filterBar.style.display='none';
     loginLink.addEventListener('click', handleLogout); // Ajout d'un écouteur d'événement au bouton de connexion pour permettre la déconnexion
     loginLink.innerHTML = '<li>logout</li>'; // Modification du texte du bouton de connexion pour afficher "logout"
   } else {
@@ -29,7 +30,6 @@ function redirectToLoginPage(event) {
   event.preventDefault();
   window.location.href = 'connexion.html'; // Redirection vers la page de connexion
 }
-
 
 // Vérification du statut de connexion de l'utilisateur au chargement de la page
 checkIfUserIsLoggedIn();
