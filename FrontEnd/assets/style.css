@@ -449,6 +449,7 @@ label {
 	padding: 0px;
 	height: 24px;
 	width: 24px;
+	cursor: pointer;
 }
 
 .fa-solid.fa-x {

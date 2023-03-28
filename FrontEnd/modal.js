@@ -47,10 +47,13 @@ async function displayProjects() {
       const galleryModal = document.querySelector('.gallery-modal');
       galleryModal.innerHTML = '';
       projects.forEach(project => {
+        const galleryItem = document.createElement('div');
+        galleryItem.classList.add('img-modal');
         const imgElement = document.createElement('img');
         imgElement.src = project.imageUrl;
         imgElement.alt = project.title;
-        galleryModal.appendChild(imgElement);
+        galleryItem.appendChild(imgElement);
+        galleryModal.appendChild(galleryItem);
       });
     } catch (error) {
       console.error(error);
