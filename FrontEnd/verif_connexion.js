@@ -2,6 +2,7 @@
 const loggedInBar = document.querySelector('.logged-in');
 const filterBar = document.querySelector('.button-container'); //Déclare la variable filterBar sans lui affecter de valeur pour l'instant
 const loginLink = document.querySelector('#login-link');
+const modifButton = document.querySelector('.header_projects button');
 
 // Fonction pour vérifier si l'utilisateur est connecté ou non
 function checkIfUserIsLoggedIn() {  
@@ -10,12 +11,15 @@ function checkIfUserIsLoggedIn() {
     loginLink.addEventListener('click', handleLogout); // Ajout d'un écouteur d'événement au bouton de connexion pour permettre la déconnexion
     loginLink.innerHTML = '<li>logout</li>'; // Modification du texte du bouton de connexion pour afficher "logout"
     filterBar.style.display='none';
+    modifButton.style.display='flex';
     }
      else {
     loggedInBar.style.display = 'none'; // Masquage de la barre de navigation correspondante
     loginLink.removeEventListener('click', handleLogout); // Suppression de l'écouteur d'événement pour la déconnexion
     loginLink.addEventListener('click', redirectToLoginPage); // Ajout d'un écouteur d'événement pour rediriger vers la page de connexion 
     loginLink.innerHTML = '<li>login</li>'; // Modification du texte du bouton de connexion pour afficher "login"
+    filterBar.style.display='flex';
+    modifButton.style.display='none;'
   }
 }
 // Fonction pour gérer la déconnexion de l'utilisateur

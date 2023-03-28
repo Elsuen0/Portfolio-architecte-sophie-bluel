@@ -164,9 +164,45 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+/****** PORTFOLIO ******/
+
+.header_projects {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 50px;
+}
+
+.header_projects p {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+}
+
+.header_projects .fa-regular.fa-pen-to-square {
+	/*margin-left: 31px;*/
+	color: black;
+	font-size: 18px;
+}
+
+.header_projects button {
+	display: none;
+	border: none;
+	color: black;
+	margin-left: 31px;
+	padding: 0px;
+	height: 18px;
+	width: 84px;
+	cursor: pointer;
+}
+
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 50px;
+	/*margin-bottom: 50px;*/
 }
 .gallery {
 	width: 100%;
