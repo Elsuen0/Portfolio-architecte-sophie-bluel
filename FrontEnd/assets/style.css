@@ -453,6 +453,7 @@ label {
 	justify-content: center;
 	height: 24px;
 	width: 24px;
+	color: black;
 }
 
 .modal-button-close {
@@ -460,4 +461,56 @@ label {
 	justify-content: flex-end;
 	margin-top: 26px;
 	margin-right: 30px;
+}
+
+.modal-wrapper h2 {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 30px;
+	text-align: center;
+
+	color: #000000;
+}
+
+.gallery-modal {
+	border: 2px solid red;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 420px;
+	height: 433px;
+	margin: auto;
+	margin-top: 46px;
+	margin-bottom: 38px;
+}
+
+.button-add-photo {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	margin-bottom: 23px;
+	background-color: #1D6154;
+	color: white;
+	width: 237px;
+	height: 36px;
+	padding-left: 49px;
+	padding-right: 49px;
+
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.modal-wrapper a {
+	display: flex;
+	justify-content: center;
+	color: red;
+	cursor: pointer;
+	width: 230px;
+	margin: auto;
+	/*border: 2px solid red;*/
 }
