@@ -2,8 +2,7 @@
 const loggedInBar = document.querySelector('.logged-in');
 const filterBar = document.querySelector('.button-container'); //Déclare la variable filterBar sans lui affecter de valeur pour l'instant
 const loginLink = document.querySelector('#login-link');
-const modifButton = document.querySelector('.header_projects button');
-const modifButton2 = document.querySelector('.button-image button');
+const modifButton = document.querySelector('.js-modal');
 
 // Fonction pour vérifier si l'utilisateur est connecté ou non
 function checkIfUserIsLoggedIn() {  
@@ -13,7 +12,6 @@ function checkIfUserIsLoggedIn() {
     loginLink.innerHTML = '<li>logout</li>'; // Modification du texte du bouton de connexion pour afficher "logout"
     filterBar.style.display='none';
     modifButton.style.display='flex';
-    modifButton2.style.display='flex';
     }
      else {
     loggedInBar.style.display = 'none'; // Masquage de la barre de navigation correspondante
@@ -22,7 +20,6 @@ function checkIfUserIsLoggedIn() {
     loginLink.innerHTML = '<li>login</li>'; // Modification du texte du bouton de connexion pour afficher "login"
     filterBar.style.display='flex';
     modifButton.style.display='none';
-    modifButton2.style.display='none';
   }
 }
 // Fonction pour gérer la déconnexion de l'utilisateur

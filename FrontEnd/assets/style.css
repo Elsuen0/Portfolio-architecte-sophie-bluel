@@ -419,6 +419,10 @@ label {
 
 * {box-sizing: border-box;}
 
+.js-modal {
+	margin-left: 30px;
+}
+
 .modal {
 	position: fixed;
 	display: flex;
