@@ -39,3 +39,23 @@ window.addEventListener('keydown', function(e) {
         closeModal(e)
     }
 })
+
+async function displayProjects() {
+    try {
+      const response = await fetch('http://localhost:5678/api/works');
+      const projects = await response.json();
+      const galleryModal = document.querySelector('.gallery-modal');
+      galleryModal.innerHTML = '';
+      projects.forEach(project => {
+        const imgElement = document.createElement('img');
+        imgElement.src = project.imageUrl;
+        imgElement.alt = project.title;
+        galleryModal.appendChild(imgElement);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+displayProjects();
+  

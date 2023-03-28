@@ -479,7 +479,7 @@ label {
 }
 
 .gallery-modal {
-	border: 2px solid red;
+	border-bottom: 1px solid #B3B3B3;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -488,6 +488,18 @@ label {
 	margin: auto;
 	margin-top: 46px;
 	margin-bottom: 38px;
+	padding-bottom: 67.3px;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	column-gap: 6px;
+	row-gap: 25px;
+}
+
+.gallery-modal img {
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
 }
 
 .button-add-photo {
@@ -518,3 +530,4 @@ label {
 	margin: auto;
 	/*border: 2px solid red;*/
 }
+
