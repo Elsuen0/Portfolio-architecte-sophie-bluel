@@ -71,10 +71,9 @@ async function createCategoryButtons() {
 
 // Ajouter les boutons à la page
 async function addButtonsToPage() {
-  const buttonContainer = document.createElement('div'); //Créer un conteneur pour les boutons de catégorie
-  buttonContainer.classList.add('button-container');
+  const buttonContainer = document.querySelector('.button-container'); // Récupérer la div avec la classe "button-container"
   await createCategoryButtons(); //Appeler la fonction pour créer les boutons
-  buttonContainer.append(...categorySet); //Ajouter tous les boutons de catégorie à la page
+  buttonContainer.append(...categorySet); //Ajouter tous les boutons de catégorie à la div
   const galleryElement = document.querySelector('.gallery');
   galleryElement.before(buttonContainer);
 }
