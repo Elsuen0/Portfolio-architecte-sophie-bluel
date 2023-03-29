@@ -55,7 +55,8 @@ async function displayProjects() {
         galleryItem.appendChild(imgElement);
         galleryModal.appendChild(galleryItem);
       });
-    } catch (error) {
+        } 
+    catch (error) {
       console.error(error);
     }
   }

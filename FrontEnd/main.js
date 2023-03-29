@@ -30,7 +30,6 @@ async function renderProjects(categoryId = '') { //Définition de la fonction as
   
     const h3Element = document.createElement('h3'); //Création d'un élément h3 pour afficher le titre du projet
     h3Element.textContent = project.title;
-  
     galleryItem.appendChild(imgElement); //Ajout de l'élément img à l'élément div de chaque projet
     galleryItem.appendChild(h3Element); //ajout de l'élément h3 à l'élément div de chaque projet
     galleryElement.appendChild(galleryItem); //Ajout de l'élément div de chaque projet à la galerie 
