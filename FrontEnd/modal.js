@@ -41,25 +41,58 @@ window.addEventListener('keydown', function(e) {
 })
 
 async function displayProjects() {
-    try {
-      const response = await fetch('http://localhost:5678/api/works');
-      const projects = await response.json();
-      const galleryModal = document.querySelector('.gallery-modal');
-      galleryModal.innerHTML = '';
-      projects.forEach(project => {
-        const galleryItem = document.createElement('div');
-        galleryItem.classList.add('img-modal');
-        const imgElement = document.createElement('img');
-        imgElement.src = project.imageUrl;
-        imgElement.alt = project.title;
-        galleryItem.appendChild(imgElement);
-        galleryModal.appendChild(galleryItem);
+  try {
+    const response = await fetch('http://localhost:5678/api/works');
+    const projects = await response.json();
+    const galleryModal = document.querySelector('.gallery-modal');
+    galleryModal.innerHTML = '';
+    projects.forEach(project => {
+      const galleryItem = document.createElement('div');
+      galleryItem.classList.add('img-modal');
+      const imgElement = document.createElement('img');
+      imgElement.src = project.imageUrl;
+      imgElement.alt = project.title;
+      galleryItem.appendChild(imgElement);
+
+      // Ajout du bouton de suppression
+      const deleteButton = document.createElement('button');
+      deleteButton.innerText = 'Supprimer';
+      deleteButton.setAttribute('type', 'button');
+      deleteButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+        try {
+          const token = localStorage.getItem('token');
+          const deleteResponse = await fetch(`http://localhost:5678/api/works/${project.id}`, {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          if (deleteResponse.ok) {
+            // Supprime le projet du DOM
+            galleryItem.remove();
+            // Supprime le projet de la liste des projets
+            const projectIndex = projects.findIndex(p => p.id === project.id);
+            if (projectIndex > -1) {
+              projects.splice(projectIndex, 1);
+              // Met à jour le DOM avec la liste de projets modifiée
+              displayProjects();
+            }
+          }
+        } catch (error) {
+          console.error(error);
+        }
       });
-        } 
-    catch (error) {
-      console.error(error);
-    }
+      
+      galleryItem.appendChild(deleteButton);
+
+      galleryModal.appendChild(galleryItem);
+    });
+  } catch (error) {
+    console.error(error);
   }
+}
 
 displayProjects();
+
   
