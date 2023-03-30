@@ -41,31 +41,33 @@ window.addEventListener('keydown', function(e) {
     }
 })
 
-async function displayProjects() {
+async function displayProjects() { // Fonction asynchrone pour afficher les projets dans la galerie
   try {
-    const response = await fetch('http://localhost:5678/api/works');
+    const response = await fetch('http://localhost:5678/api/works'); // Récupération des projets via l'API
     const projects = await response.json();
-    const galleryModal = document.querySelector('.gallery-modal');
-    galleryModal.innerHTML = '';
-    projects.forEach(project => {
-      const galleryItem = document.createElement('div');
+    const galleryModal = document.querySelector('.gallery-modal'); // Sélection de la galerie dans le DOM
+    galleryModal.innerHTML = ''; // Nettoyage de la galerie
+    projects.forEach(project => { // Boucle pour chaque projet dans la liste des projets
+      const galleryItem = document.createElement('div'); // Création de la div pour chaque projet
       galleryItem.classList.add('img-modal');
-      const imgElement = document.createElement('img');
+
+      const imgElement = document.createElement('img'); // Ajout de l'image du projet dans la div
       imgElement.src = project.imageUrl;
       imgElement.alt = project.title;
       galleryItem.appendChild(imgElement);
 
       // Ajout du bouton de suppression
-      const deleteIcon = document.createElement('i');
+      const deleteIcon = document.createElement('i'); // ajout de l'icone
       deleteIcon.classList.add('fas', 'fa-trash-alt');
+
       const deleteButton = document.createElement('button');
       deleteButton.setAttribute('type', 'button');
       deleteButton.appendChild(deleteIcon);
-      deleteButton.addEventListener('click', async (event) => {
+      deleteButton.addEventListener('click', async (event) => { //ajout de l'événement clic pour le bouton de suppression 
         event.preventDefault();
         try {
-          const token = localStorage.getItem('token');
-          const deleteResponse = await fetch(`http://localhost:5678/api/works/${project.id}`, {
+          const token = localStorage.getItem('token'); // Récupération du token d'identification
+          const deleteResponse = await fetch(`http://localhost:5678/api/works/${project.id}`, { // Appel de l'API pour supprimer le projet correspondant à l'id du projet avec la method delete
             method: 'DELETE',
             headers: {
               Authorization: `Bearer ${token}`
@@ -74,7 +76,7 @@ async function displayProjects() {
           if (deleteResponse.ok) {
             // Supprime le projet du DOM
             galleryModal.removeChild(galleryItem);
-            renderProjects();
+            renderProjects(); // Actualisation de la galerie après suppression 
             // Supprime le projet de la liste des projets
             const projectIndex = projects.findIndex(p => p.id === project.id);
             if (projectIndex > -1) {
@@ -86,16 +88,17 @@ async function displayProjects() {
           console.error(error);
         }
       });
-      
+      // Ajout du bouton de suppression à la div du projet
       galleryItem.appendChild(deleteButton);
 
+      //Ajout de la div du projet à la galerie
       galleryModal.appendChild(galleryItem);
     });
   } catch (error) {
     console.error(error);
   }
 }
-
+//Appel de la fonction pour afficher les projets
 displayProjects();
 
 

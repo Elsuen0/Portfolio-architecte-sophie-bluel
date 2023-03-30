@@ -497,12 +497,40 @@ label {
 
 .gallery-modal img {
 	width: 100%;
-	height: 100%;
 	object-fit:cover;
 }
 
+.gallery-modal button {
+	display: flex;
+	justify-content: center;
+	border: 1px solid black;
+	background-color: #000000;
+	border-radius: 3px;
+	height: 17px;
+	width: 17px;
+	padding: 0px;
+	margin: auto;
+
+	position: relative;
+	right: -25px;
+	top: -103px;
+
+	cursor: pointer;
+}
+
+.fas.fa-trash-alt {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	height: 9px;
+	width: 9px;
+	font-size: 9px;
+	margin: auto;
+}
+
 .img-modal {
-	height: 100%;
+	height: 105px;
 }
 
 .button-add-photo {
