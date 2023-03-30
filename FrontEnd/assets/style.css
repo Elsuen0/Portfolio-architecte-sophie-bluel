@@ -80,6 +80,7 @@ header {
 	height: 59px;
 	background-color: black;
 	color: white;
+	position: fixed;
 }
 
 .logged-in button {
@@ -111,7 +112,7 @@ header {
 	justify-content: space-between;
 	width: 1140px;
 	margin: auto;
-	margin-top: 50px;
+	margin-top: 70px;
 }
 
 section {
