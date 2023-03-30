@@ -8,7 +8,7 @@ async function getProjects() { //Définition de la fonction asynchrone getProjec
   }
 }
 
-async function renderProjects(categoryId = '') { //Définition de la fonction asynchrone renderProjetcs pour afficher les projets dans la galerie
+export async function renderProjects(categoryId = '') { //Définition de la fonction asynchrone renderProjetcs pour afficher les projets dans la galerie
   const projects = await getProjects(); //Récupération de la liste complète des projets
   const categories = await getCategories(); //Récupération de la liste des catégories
   const galleryElement = document.querySelector('.gallery'); //Récupération de l'élement de gallery
@@ -82,4 +82,3 @@ addButtonsToPage();
 
 // Afficher tous les projets par défaut
 renderProjects();
-

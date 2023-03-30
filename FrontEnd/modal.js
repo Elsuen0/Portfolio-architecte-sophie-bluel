@@ -1,4 +1,5 @@
 let modal = null
+import { renderProjects } from "./main.js"
 
 const openModal = function (e) {
     e.preventDefault()
@@ -55,9 +56,11 @@ async function displayProjects() {
       galleryItem.appendChild(imgElement);
 
       // Ajout du bouton de suppression
+      const deleteIcon = document.createElement('i');
+      deleteIcon.classList.add('fas', 'fa-trash-alt');
       const deleteButton = document.createElement('button');
-      deleteButton.innerText = 'Supprimer';
       deleteButton.setAttribute('type', 'button');
+      deleteButton.appendChild(deleteIcon);
       deleteButton.addEventListener('click', async (event) => {
         event.preventDefault();
         try {
@@ -70,15 +73,15 @@ async function displayProjects() {
           });
           if (deleteResponse.ok) {
             // Supprime le projet du DOM
-            galleryItem.remove();
+            galleryModal.removeChild(galleryItem);
+            renderProjects();
             // Supprime le projet de la liste des projets
             const projectIndex = projects.findIndex(p => p.id === project.id);
             if (projectIndex > -1) {
               projects.splice(projectIndex, 1);
-              // Met à jour le DOM avec la liste de projets modifiée
-              displayProjects();
             }
           }
+          
         } catch (error) {
           console.error(error);
         }
@@ -94,5 +97,6 @@ async function displayProjects() {
 }
 
 displayProjects();
+
 
   
