@@ -58,17 +58,42 @@
 					<div class="modal-button-close">
 						<button class="js-modal-close"><i class="fa-solid fa-x"></i></button>
 					</div>
+
+					<div class="modal-button-previous" style="display: none;">
+						<button class="js-modal-previous"><i class="fa-solid fa-arrow-left"></i></button>
+					</div>
+
 					<h2>Galerie Photo</h2>
 					<div class="gallery-modal">
 						<!--Projets ajoutés en JS-->
 					</div>
-					<button class="button-add-photo">Ajouter une photo</button>
+
+					<div class="gallery-modal2" style="display: none;">
+						<form action="upload.php" method="post" enctype="multipart/form-data">
+							<div class="custom-img">
+							<label for="image">+ Ajouter photo</label>
+							<i class="fa-regular fa-images"></i>
+							<input type="file" id="image" name="image"><br>
+							</div>
+						  
+							<label for="title">Titre :</label>
+							<input type="text" id="title" name="title"><br>
+						  
+							<label for="category">Catégorie :</label>
+							<select id="category" name="category">
+							  <option value="1">Objet</option>
+							  <option value="2">Appartements</option>
+							  <option value="3">Hôtels & restaurants</option>
+							</select><br>
+						  
+							<input type="submit" value="Envoyer">
+						  </form>
+						  
+					</div>
+					<a href="" class="button-add-photo">ajouter une photo</a>
 					<a>Supprimer la galerie</a>
 				</div>
 			</aside>
-
-
-
 
 		</div>
 		<div class="button-container"></div>

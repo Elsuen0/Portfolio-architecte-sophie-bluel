@@ -1,4 +1,10 @@
 let modal = null
+
+const container = document.querySelector('.gallery-modal')
+const container2 = document.querySelector('.gallery-modal2')
+const title = document.querySelector('.modal-wrapper h2')
+const previousButton = document.querySelector('.modal-button-previous')
+
 import { renderProjects } from "./main.js"
 
 const openModal = function (e) {
@@ -22,7 +28,7 @@ const closeModal = function (e) {
     modal.removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
-
+    previousModal(e)
     modal = null
 }
 
@@ -40,6 +46,26 @@ window.addEventListener('keydown', function(e) {
         closeModal(e)
     }
 })
+
+function hideElement(e) { 
+  e.preventDefault()
+  container.style.display = 'none';
+  container2.style.display = 'flex';
+  previousButton.style.display = null
+  title.textContent = 'Ajout Photo';
+}
+
+function previousModal(e) {
+  e.preventDefault()
+  container.style.display = null
+  container2.style.display = 'none'
+  previousButton.style.display = 'none'
+  title.textContent = 'Galerie photo'
+}
+
+document.querySelector('.button-add-photo').addEventListener('click', hideElement)
+
+previousButton.addEventListener('click', previousModal)
 
 async function displayProjects() { // Fonction asynchrone pour afficher les projets dans la galerie
   try {
@@ -100,6 +126,4 @@ async function displayProjects() { // Fonction asynchrone pour afficher les proj
 }
 //Appel de la fonction pour afficher les projets
 displayProjects();
-
-
   
