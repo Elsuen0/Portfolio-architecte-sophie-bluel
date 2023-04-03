@@ -553,14 +553,15 @@ label {
 .button-add-photo {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	margin: auto;
 	margin-bottom: 23px;
 	background-color: #1D6154;
 	color: white;
 	width: 237px;
 	height: 36px;
-	padding-left: 49px;
-	padding-right: 49px;
+	padding: 0px;
+	border-radius: 20px;
 
 	font-family: 'Syne';
 	font-style: normal;
@@ -569,15 +570,11 @@ label {
 	line-height: 17px;
 }
 
-.modal-wrapper a {
+.delete-button {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 48px;
 	color: red;
-	cursor: pointer;
-	width: 230px;
-	margin: auto;
-	padding-bottom: 20px;
-	/*border: 2px solid red;*/
 }
 
 /****** MODAL 2 ******/
@@ -607,6 +604,10 @@ label {
 	justify-content: center;
 	width: 420px;
 	margin: auto;
+}
+
+.modal-wrapper h2 {
+	margin-bottom: 36px;
 }
 
 .gallery-modal2 form {
@@ -659,4 +660,11 @@ input[type="file"] {
 	height: 51px;
 	background: #FFFFFF;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.gallery-modal2 input[type="submit"] {
+	border: none;
+	width: 237px;
+	height: 36px;
+	background-color: #A7A7A7;
 }

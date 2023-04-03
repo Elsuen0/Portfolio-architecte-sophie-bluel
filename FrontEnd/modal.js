@@ -52,6 +52,8 @@ function hideElement(e) {
   container.style.display = 'none';
   container2.style.display = 'flex';
   previousButton.style.display = null
+  document.querySelector('.button-add-photo').style.display = 'none'
+  document.querySelector('.delete-button').style.display = 'none'
   title.textContent = 'Ajout Photo';
 }
 
@@ -60,6 +62,8 @@ function previousModal(e) {
   container.style.display = null
   container2.style.display = 'none'
   previousButton.style.display = 'none'
+  document.querySelector('.button-add-photo').style.display = null
+  document.querySelector('.delete-button').style.display = null
   title.textContent = 'Galerie photo'
 }
 
