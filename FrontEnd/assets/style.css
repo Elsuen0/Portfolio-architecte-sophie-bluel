@@ -585,6 +585,7 @@ label {
 .modal-button-previous {
 	display: flex;
 	justify-content: flex-start;
+	border: 2px solid red;
 }
 
 .gallery-modal2 {
@@ -595,8 +596,10 @@ label {
 	border: none;
 	color: black;
 	position: relative;
-	top: -30px;
-	left: 10px;
+	top: -25px;
+	left: 20px;
+	cursor: pointer;
+	padding: 0px;
 }
 
 .gallery-modal2 {
@@ -622,14 +625,29 @@ label {
 	background-color: #E8F1F7;
 }
 
-.fa-sharp {
+.fa-regular.fa-images {
 	color: #b9c5cc;
 	font-size: 50px;
+	margin-bottom: 20px;
+	margin-top: 28px;
 }
 
-.file-upload-button {
+.addbutton {
 	display: flex;
-	justify-content: center;
+	color: #306685;
+	background-color: #CBD6DC;
+	padding: 10px 33px 10px 33px;
+	border-radius: 20px;
+	cursor: pointer;
+
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.gallery-modal2 p {
+	color: #444444;
 }
 
 input[type="file"] {

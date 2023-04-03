@@ -3,7 +3,7 @@ let modal = null
 const container = document.querySelector('.gallery-modal')
 const container2 = document.querySelector('.gallery-modal2')
 const title = document.querySelector('.modal-wrapper h2')
-const previousButton = document.querySelector('.modal-button-previous')
+const previousButton = document.querySelector('.js-modal-previous')
 
 import { renderProjects } from "./main.js"
 

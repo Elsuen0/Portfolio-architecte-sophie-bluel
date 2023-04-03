@@ -59,9 +59,9 @@
 						<button class="js-modal-close"><i class="fa-solid fa-x"></i></button>
 					</div>
 
-					<div class="modal-button-previous" style="display: none;">
-						<button class="js-modal-previous"><i class="fa-solid fa-arrow-left"></i></button>
-					</div>
+					
+					<button class="js-modal-previous" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
+					
 
 					<h2>Galerie Photo</h2>
 					<div class="gallery-modal">
@@ -71,8 +71,9 @@
 					<div class="gallery-modal2" style="display: none;">
 						<form action="upload.php" method="post" enctype="multipart/form-data">
 							<div class="custom-img">
-							<label for="image">+ Ajouter photo</label>
 							<i class="fa-regular fa-images"></i>
+							<label for="image" class="addbutton">+ Ajouter photo</label>
+							<p>jpg, png : 4mo max</p>
 							<input type="file" id="image" name="image"><br>
 							</div>
 						  
