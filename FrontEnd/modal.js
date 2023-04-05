@@ -47,6 +47,8 @@ window.addEventListener('keydown', function(e) {
     }
 })
 
+// Code pour afficher la seconde fenêtre modal
+
 function hideElement(e) { 
   e.preventDefault()
   container.style.display = 'none';
