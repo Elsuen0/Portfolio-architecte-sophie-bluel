@@ -4,6 +4,7 @@ const container = document.querySelector('.gallery-modal')
 const container2 = document.querySelector('.gallery-modal2')
 const title = document.querySelector('.modal-wrapper h2')
 const previousButton = document.querySelector('.js-modal-previous')
+const myForm = document.getElementById('myForm')
 
 import { renderProjects } from "./main.js"
 
@@ -29,6 +30,8 @@ const closeModal = function (e) {
     modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
     previousModal(e)
+    myForm.reset(e);
+    imagePreview.removeAttribute('src')
     modal = null
 }
 
@@ -69,11 +72,32 @@ function previousModal(e) {
   title.textContent = 'Galerie photo'
 }
 
-document.querySelector('.button-add-photo').addEventListener('click', hideElement)
+document.querySelector('.button-add-photo').addEventListener('click', function(e) {
+  hideElement(e);
+  imagePreview.setAttribute('src')
+  imagePreview = objectUrl; 
+})
 
-previousButton.addEventListener('click', previousModal)
+previousButton.addEventListener('click', function(e){
+  previousModal(e);
+  myForm.reset
+  imagePreview.removeAttribute('src')
+})
 
-async function displayProjects() { // Fonction asynchrone pour afficher les projets dans la galerie
+// Afficher la miniature de l'image sélectionnée dans le formulaire
+
+const imageInput = document.getElementById('image');
+
+imageInput.addEventListener('change', function() {
+  const selectedFile = imageInput.files[0];
+  const objectUrl = URL.createObjectURL(selectedFile);
+  const imagePreview = document.getElementById('imagePreview');
+  imagePreview.src = objectUrl;
+});
+
+// Fonction asynchrone pour afficher les projets dans la galerie
+
+async function displayProjects() { 
   try {
     const response = await fetch('http://localhost:5678/api/works'); // Récupération des projets via l'API
     const projects = await response.json();

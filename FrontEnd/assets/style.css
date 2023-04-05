@@ -677,3 +677,8 @@ label[for="title"] {
 	border: 1px solid #b3b3b379;
 	margin-top: 47px;
 }
+
+#imagePreview {
+	position: absolute;
+	height: 169px;
+}
