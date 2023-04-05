@@ -78,13 +78,11 @@ function previousModal(e) {
   title.textContent = 'Galerie photo'
 }
 
-function hideElementsPhoto(e) {
+function hideElementsPhoto() {
   faImage.style.display = 'none';
   addButton.style.display = 'none'
   paragraphe.style.display = 'none'
 }
-
-addButton.addEventListener('click', hideElementsPhoto());
 
 document.querySelector('.button-add-photo').addEventListener('click', function(e) {
   hideElement(e);
@@ -96,6 +94,8 @@ previousButton.addEventListener('click', function(e){
   previousModal(e);
 })
 
+
+
 // Afficher la miniature de l'image sélectionnée dans le formulaire
 
 const imageInput = document.getElementById('image');
@@ -105,6 +105,10 @@ imageInput.addEventListener('change', function() {
   const objectUrl = URL.createObjectURL(selectedFile);
   const imagePreview = document.getElementById('imagePreview');
   imagePreview.src = objectUrl;
+});
+
+imagePreview.addEventListener('load', function() {
+  hideElementsPhoto();
 });
 
 // Fonction asynchrone pour afficher les projets dans la galerie
