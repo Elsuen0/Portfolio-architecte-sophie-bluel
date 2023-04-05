@@ -5,6 +5,9 @@ const container2 = document.querySelector('.gallery-modal2')
 const title = document.querySelector('.modal-wrapper h2')
 const previousButton = document.querySelector('.js-modal-previous')
 const myForm = document.getElementById('myForm')
+const faImage = document.querySelector('.fa-regular.fa-images')
+const addButton = document.querySelector('.addbutton')
+const paragraphe = document.querySelector('.custom-img p')
 
 import { renderProjects } from "./main.js"
 
@@ -32,6 +35,9 @@ const closeModal = function (e) {
     previousModal(e)
     myForm.reset(e);
     imagePreview.removeAttribute('src')
+    faImage.style.display = null
+    addButton.style.display = null
+    paragraphe.style.display = null
     modal = null
 }
 
@@ -72,6 +78,14 @@ function previousModal(e) {
   title.textContent = 'Galerie photo'
 }
 
+function hideElementsPhoto(e) {
+  faImage.style.display = 'none';
+  addButton.style.display = 'none'
+  paragraphe.style.display = 'none'
+}
+
+addButton.addEventListener('click', hideElementsPhoto());
+
 document.querySelector('.button-add-photo').addEventListener('click', function(e) {
   hideElement(e);
   imagePreview.setAttribute('src')
@@ -80,8 +94,6 @@ document.querySelector('.button-add-photo').addEventListener('click', function(e
 
 previousButton.addEventListener('click', function(e){
   previousModal(e);
-  myForm.reset
-  imagePreview.removeAttribute('src')
 })
 
 // Afficher la miniature de l'image sélectionnée dans le formulaire
