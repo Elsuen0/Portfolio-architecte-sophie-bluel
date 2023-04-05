@@ -94,8 +94,6 @@ previousButton.addEventListener('click', function(e){
   previousModal(e);
 })
 
-
-
 // Afficher la miniature de l'image sélectionnée dans le formulaire
 
 const imageInput = document.getElementById('image');
@@ -106,6 +104,8 @@ imageInput.addEventListener('change', function() {
   const imagePreview = document.getElementById('imagePreview');
   imagePreview.src = objectUrl;
 });
+
+// Masquer les éléments (bouton, texte, icone) une fois que la miniature est chargée
 
 imagePreview.addEventListener('load', function() {
   hideElementsPhoto();
