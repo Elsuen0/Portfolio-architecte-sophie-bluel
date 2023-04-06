@@ -667,7 +667,7 @@ label[for="title"] {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-.gallery-modal2 input[type="submit"] {
+#submitButton {
 	border: none;
 	width: 237px;
 	height: 36px;

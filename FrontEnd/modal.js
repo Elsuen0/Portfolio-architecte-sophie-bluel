@@ -172,4 +172,88 @@ async function displayProjects() {
 }
 //Appel de la fonction pour afficher les projets
 displayProjects();
-  
+
+  // Fonction pour récupérer les catégories
+  function getCategories() {
+    return fetch("http://localhost:5678/api/categories")
+      .then(response => response.json())
+      .then(data => data.categories)
+      .catch(error => console.error(error));
+  }
+
+  // Fonction pour ajouter un projet
+  function addProject(event) {
+    event.preventDefault(); // Empêcher le formulaire de se soumettre
+
+    // Récupérer les valeurs des champs du formulaire
+    const title = document.getElementById("title").value;
+    const categorySelect = document.getElementById("category");
+    const categoryId = parseInt(categorySelect.options[categorySelect.selectedIndex].value);
+    const image = document.getElementById("image").files[0];
+    const token = localStorage.getItem("token");
+
+    // Vérifier si toutes les informations demandées sont remplies
+    if (!title || !categorySelect.value || !image || !token) {
+      alert("Veuillez remplir tous les champs !");
+      return;
+    }
+
+    // Créer un objet FormData pour envoyer les données
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", categoryId);
+    formData.append("image", image);
+
+    // Envoyer les données à l'API
+    fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    })
+      .then(response => {
+        if (response.ok) {
+          alert("Projet ajouté !");
+          window.location.reload();
+        } else {
+          throw new Error("Erreur lors de l'ajout du projet");
+        }
+      })
+      .catch(error => console.error(error));
+  }
+
+  // Fonction pour changer la couleur du bouton "Valider"
+  function checkFormValidity() {
+    const title = document.getElementById("title").value;
+    const categorySelect = document.getElementById("category");
+    const image = document.getElementById("image").files[0];
+    const isValid = title && categorySelect.value && image;
+    const submitButton = document.getElementById("submitButton");
+    submitButton.style.backgroundColor = isValid ? "#1D6154" : "#bbb";
+    submitButton.disabled = !isValid;
+  }
+
+  // Ajouter un écouteur d'événement pour le changement de sélection de la catégorie
+  document.getElementById("category").addEventListener("change", checkFormValidity);
+
+  // Ajouter un écouteur d'événement pour la sélection d'un fichier image
+  document.getElementById("image").addEventListener("change", checkFormValidity);
+
+  // Ajouter un écouteur d'événement pour le changement du titre
+  document.getElementById("title").addEventListener("input", checkFormValidity);
+
+  // Ajouter un écouteur d'événement pour la soumission du formulaire
+  document.getElementById("myForm").addEventListener("submit", addProject);
+
+  // Récupérer les catégories et remplir la liste déroulante
+  getCategories().then(categories => {
+    const categorySelect = document.getElementById("category");
+    categories.forEach(category => {
+      const option = document.createElement("option");
+      option.value = category.id;
+      option.text = category.name;
+      categorySelect.add(option);
+    });
+    checkFormValidity();
+  });
