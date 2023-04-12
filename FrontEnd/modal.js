@@ -80,14 +80,13 @@ function previousModal(e) {
 
 function hideElementsPhoto() {
   faImage.style.display = 'none';
-  addButton.style.display = 'none'
-  paragraphe.style.display = 'none'
+  addButton.style.display = 'none';
+  paragraphe.style.display = 'none';
 }
 
 document.querySelector('.button-add-photo').addEventListener('click', function(e) {
   hideElement(e);
-  imagePreview.setAttribute('src')
-  imagePreview = objectUrl; 
+  imagePreview.setAttribute('src', "")
 })
 
 previousButton.addEventListener('click', function(e){
@@ -215,7 +214,9 @@ displayProjects();
       .then(response => {
         if (response.ok) {
           alert("Projet ajouté !");
-          window.location.reload();
+          renderProjects();
+          displayProjects();
+
         } else {
           throw new Error("Erreur lors de l'ajout du projet");
         }
@@ -249,11 +250,13 @@ displayProjects();
   // Récupérer les catégories et remplir la liste déroulante
   getCategories().then(categories => {
     const categorySelect = document.getElementById("category");
-    categories.forEach(category => {
-      const option = document.createElement("option");
-      option.value = category.id;
-      option.text = category.name;
-      categorySelect.add(option);
-    });
+    if (categories) {
+      categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.text = category.name;
+        categorySelect.add(option);
+      });
+    };
     checkFormValidity();
   });
