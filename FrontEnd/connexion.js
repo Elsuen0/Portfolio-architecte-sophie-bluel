@@ -47,9 +47,11 @@ function checkIfUserIsLoggedIn() {
     loginLinkText.textContent = 'Log out';
     filterBar.style.display = 'none';
   } else {
-    loggedInBar.style.display = 'none';
-    loginLinkText.textContent = 'Login';
-    filterBar.style.display = 'flex'
+    if (loggedInBar && loginLinkText && filterBar) {
+      loggedInBar.style.display = 'none';
+      loginLinkText.textContent = 'Login';
+      filterBar.style.display = 'flex'
+    } 
   }
 }
 

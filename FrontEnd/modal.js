@@ -63,10 +63,15 @@ function hideElement(e) {
   container.style.display = 'none';
   container2.style.display = 'flex';
   previousButton.style.display = null
+  addButton.style.display = null
+  faImage.style.display = null
+  paragraphe.style.display = null
   document.querySelector('.button-add-photo').style.display = 'none'
   document.querySelector('.delete-button').style.display = 'none'
   title.textContent = 'Ajout Photo';
 }
+
+
 
 function previousModal(e) {
   e.preventDefault()
@@ -76,6 +81,11 @@ function previousModal(e) {
   document.querySelector('.button-add-photo').style.display = null
   document.querySelector('.delete-button').style.display = null
   title.textContent = 'Galerie photo'
+  document.getElementById('image').value=''
+  document.getElementById('title').value=''
+  document.getElementById('category').value=''
+  const submitButton = document.getElementById("submitButton");
+  submitButton.style.backgroundColor = '#bbb'
 }
 
 function hideElementsPhoto() {
